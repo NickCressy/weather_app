@@ -1,0 +1,15 @@
+{% load bootstrap4 %}
+
+<h2> Your Saved Locations </h2>
+<ul>
+    {% for location in locations %}
+        <li>{{ location.city }}</li>
+    {% endfor %}
+</ul>
+
+<h3>Add a New Location</h3>
+<form method="POST">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button type="submit" class="btn btn-primary">Add Location</button>
+</form>
