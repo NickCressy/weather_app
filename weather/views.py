@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .models import Location
+from .forms import LocationForm
 
 def signup(request):
     if request.method == 'POST':
@@ -26,4 +27,4 @@ def home(request):
             form = LocationForm()
         return render(request, 'weather/home.html', {'locations': locations, 'form': form})
     else:
-        return redirect('login'))
+        return redirect('login')
