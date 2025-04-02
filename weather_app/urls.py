@@ -16,10 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
 from weather import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('weather/', include('weather.urls')),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('signup/', views.signup, name='signup'),
     path('', views.home, name='home'),
 ]

@@ -1,6 +1,10 @@
 {% load bootstrap4 %}
 
 <h2> Your Saved Locations </h2>
+<form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
 <ul>
     {% for location in locations %}
         <li>{{ location.city }}</li>
@@ -24,4 +28,3 @@
     <button type="submit" class="btn btn-primary">Add Location</button>
 </form>
 
-<a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
