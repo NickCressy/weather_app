@@ -4,6 +4,16 @@
 <ul>
     {% for location in locations %}
         <li>{{ location.city }}</li>
+        {% if weather_data %}
+            <ul>
+                {% for weather in weather_data %}
+                    {% if weather.city == location.city %}
+                        <li>Temperature: {{ weather.weather.main.temp }} Celsius</li>
+                        <li>Weather: {{ weather.weather.weather.0.description }} </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endif %}
     {% endfor %}
 </ul>
 
@@ -13,3 +23,5 @@
     {% bootstrap_form form %}
     <button type="submit" class="btn btn-primary">Add Location</button>
 </form>
+
+<a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
